@@ -1,0 +1,132 @@
+DIAGRAMA: 
++-------------------------------------------------------+
+|                     ContaBancaria                     |
++-------------------------------------------------------+
+| - titular: string                                     |
+| - numeroConta: string                                 |
+| - saldo: float                                        |
++-------------------------------------------------------+
+| + __construct($titular, $numeroConta, $saldoInicial)  |
+| + getTitular(): string                                |
+| + setTitular($titular): void                          |
+| + getNumeroConta(): string                            |
+| + setNumeroConta($numeroConta): void                  |
+| + getSaldo(): float                                   |
+| + depositar($valor): void                             |
+| + sacar($valor): void                                 |
+| + exibirResumo(): void                                |
++-------------------------------------------------------+
+
+CÓDIGO:
+PARTE 01:
+<?php
+class ContaBancaria {
+    // 3 atributos privados
+    private $titular;
+    private $numeroConta;
+    private $saldo;
+
+    // Construtor recebendo pelo menos 2 parâmetros (neste caso, recebe os 3 iniciais)
+    public function __construct($titular, $numeroConta, $saldoInicial = 0.0) {
+        $this->titular = $titular;
+        $this->numeroConta = $numeroConta;
+        $this->saldo = $saldoInicial;
+    }
+
+    // Getters e Setters
+    public function getTitular() {
+        return $this->titular;
+    }
+
+    // Setter com validação: titular precisa ter pelo menos 3 caracteres
+    public function setTitular($titular) {
+        if (strlen($titular) < 3) {
+            echo "<strong>Erro:</strong> O nome do titular deve ter ao menos 3 letras.<br>";
+            return;
+        }
+        $this->titular = $titular;
+    }
+
+    public function getNumeroConta() {
+        return $this->numeroConta;
+    }
+
+    public function setNumeroConta($numeroConta) {
+        $this->numeroConta = $numeroConta;
+    }
+
+    public function getSaldo() {
+        return $this->saldo;
+    }
+
+    // Método de operação com dados: Depositar com validação
+    public function depositar($valor) {
+        if ($valor <= 0) {
+            echo "<strong>Erro:</strong> O valor do depósito precisa ser maior que zero.<br>";
+            return;
+        }
+        $this->saldo += $valor;
+        echo "Depósito de R$ {$valor} realizado com sucesso na conta de {$this->titular}.<br>";
+    }
+
+    // Método de operação com dados: Sacar com checagem de saldo
+    public function sacar($valor) {
+        if ($valor <= 0) {
+            echo "<strong>Erro:</strong> Valor de saque inválido.<br>";
+            return;
+        }
+        if ($valor > $this->saldo) {
+            echo "<strong>Saldo insuficiente</strong> para {$this->titular} sacar R$ {$valor}.<br>";
+            return;
+        }
+        $this->saldo -= $valor;
+        echo "Saque de R$ {$valor} realizado por {$this->titular}.<br>";
+    }
+
+    // Método auxiliar de exibição
+    public function exibirResumo() {
+        echo "Titular: {$this->titular} | Conta: {$this->numeroConta} | Saldo Atual: R$ {$this->saldo}<br>";
+    }
+}
+?>
+
+PARTE 02:
+<?php
+require_once 'ContaBancaria.php';
+
+// Criando 3 objetos diferentes
+$conta1 = new ContaBancaria("Carlos Drummond", "001-A", 500.00);
+$conta2 = new ContaBancaria("Clarice Lispector", "002-B", 1200.00);
+$conta3 = new ContaBancaria("Ariano Suassuna", "003-C", 100.00);
+
+echo "<h3>Estado Inicial das Contas:</h3>";
+$conta1->exibirResumo();
+$conta2->exibirResumo();
+$conta3->exibirResumo();
+
+echo "<h3>Operações Bancárias:</h3>";
+// Depósito e Saque na conta 1
+$conta1->depositar(200.00);
+$conta1->sacar(100.00);
+
+// Tentativa de saque além do saldo na conta 3
+$conta3->sacar(300.00);
+
+// Testando a validação do setter do titular na conta 2
+$conta2->setTitular("Cl"); // inválido, mensagem de erro esperada
+
+echo "<h3>Estado Final das Contas:</h3>";
+$conta1->exibirResumo();
+$conta2->exibirResumo();
+$conta3->exibirResumo();
+?>
+
+Explicação Passo a Passo, o que foi feito:
+Criamos a classe ContaBancaria em seu próprio arquivo ContaBancaria.php com atributos privados ($titular, $numeroConta, $saldo).  
+Implementamos um construtor para inicializar o objeto já com os dados fundamentais.  
+Adicionamos validação no método setTitular() exigindo tamanho mínimo de nome.  
+Adicionamos métodos de negócio (depositar e sacar) que operam e alteram o saldo de forma segura.  
+No index.php, importamos o arquivo via require_once, instanciamos 3 contas distintas e testamos fluxos de sucesso e de erro nas validações.  
+Por que fizemos assim: Este exercício reúne todos os pilares vistos nas aulas: organização modular de arquivos (PSR), proteção de 
+dados sensíveis (encapsulamento), garantia de criação íntegra (construtor) e manipulação controlada do estado interno do objeto 
+através de métodos.  
