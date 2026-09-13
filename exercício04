@@ -1,0 +1,57 @@
+DIAGRAMA:
+
++------------------------------------------+
+|                  Livro                   |
++------------------------------------------+
+| + titulo: string                         |
+| + autor: string                          |
+| + preco: float                           |
++------------------------------------------+
+| + definirDados($titulo, $autor, $preco)  |
+| + aplicarDesconto($percentual): void     |
+| + exibir(): void                         |
++------------------------------------------+
+
+CÓDIGO: 
+
+<?php
+class Livro {
+    public $titulo;
+    public $autor;
+    public $preco;
+
+    public function definirDados($titulo, $autor, $preco) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+        $this->preco = $preco;
+    }
+
+    // Método que calcula e aplica um desconto sobre o preço atual
+    public function aplicarDesconto($percentual) {
+        $desconto = $this->preco * ($percentual / 100);
+        $this->preco = $this->preco - $desconto;
+    }
+
+    public function exibir() {
+        echo "Livro: " . $this->titulo . " | Preço: R$ " . $this->preco . "<br>";
+    }
+}
+
+$livro1 = new Livro();
+$livro1->definirDados("O Hobbit", "J.R.R. Tolkien", 50.00);
+
+echo "<strong>Antes do desconto:</strong><br>";
+$livro1->exibir();
+
+// Aplicando 10% de desconto
+$livro1->aplicarDesconto(10);
+
+echo "<strong>Depois de 10% de desconto:</strong><br>";
+$livro1->exibir();
+?>
+
+Explicação Passo a Passo, o que foi feito: 
+Adicionamos o atributo $preco e o método aplicarDesconto($percentual). 
+O método subtrai uma porcentagem do valor original e atualiza $this->preco.  
+Por que fizemos assim: Classes não servem apenas para guardar dados passivos; métodos existem para manipular e alterar 
+esses dados dentro da própria lógica do objeto.  
