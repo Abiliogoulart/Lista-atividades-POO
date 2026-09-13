@@ -1,0 +1,43 @@
+CÓDIGO:
+
+<?php
+class Livro {
+    public $titulo;
+    public $autor;
+
+    public function exibir() {
+        echo "Livro: " . $this->titulo . " - Autor: " . $this->autor . "<br>";
+    }
+}
+
+// Criando o primeiro objeto
+$livro1 = new Livro();
+$livro1->titulo = "Dom Casmurro";
+$livro1->autor = "Machado de Assis";
+
+// Criando o segundo objeto
+$livro2 = new Livro();
+$livro2->titulo = "O Alquimista";
+$livro2->autor = "Paulo Coelho";
+
+// Criando o terceiro objeto
+$livro3 = new Livro();
+$livro3->titulo = "1984";
+$livro3->autor = "George Orwell";
+
+// Chamando a exibição dos três objetos
+$livro1->exibir();
+$livro2->exibir();
+$livro3->exibir();
+
+/* 
+ * Resposta exigida pelo exercício:
+ * Os 3 objetos não se confundem porque cada execução de 'new' aloca um espaço 
+ * independente na memória do computador, guardando seus próprios dados separadamente.
+ */
+?>
+
+Explicação Passo a Passo:O que foi feito: 
+Criamos 3 variáveis diferentes ($livro1, $livro2 e $livro3), cada uma recebendo um new Livro() com dados próprios, e chamamos o método de cada uma.  
+Por que fizemos assim: A classe é única (o molde), mas cada objeto instanciado é uma cópia independente com seu próprio estado. 
+O $this dentro de exibir() sabe exatamente quem chamou o método em cada linha.  
