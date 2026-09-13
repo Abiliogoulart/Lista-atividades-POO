@@ -1,0 +1,60 @@
+DIAGRAMA: 
++-----------------------------------+
+|               Livro               |
++-----------------------------------+
+| - titulo: string                  |
+| - autor: string                   |
++-----------------------------------+
+| + getTitulo(): string             |
+| + setTitulo($titulo): void        |
+| + getAutor(): string              |
+| + setAutor($autor): void          |
++-----------------------------------+
+
+CÓDIGO:
+PARTE 01:
+<?php
+class Livro {
+    // Atributos privados (protegidos contra acesso direto)
+    private $titulo;
+    private $autor;
+
+    // Métodos Get e Set para o Título
+    public function getTitulo() {
+        return $this->titulo;
+    }
+
+    public function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    // Métodos Get e Set para o Autor
+    public function getAutor() {
+        return $this->autor;
+    }
+
+    public function setAutor($autor) {
+        $this->autor = $autor;
+    }
+}
+?>
+
+PARTE 02:
+<?php
+require_once 'Livro.php';
+
+$livro = new Livro();
+
+// Usando os setters para definir valores
+$livro->setTitulo("Memórias Póstumas de Brás Cubas");
+$livro->setAutor("Machado de Assis");
+
+// Usando o getter diretamente em um echo
+echo "O livro cadastrado foi: <strong>" . $livro->getTitulo() . "</strong>, escrito por " . $livro->getAutor() . ".";
+?>
+
+Explicação Passo a Passo, o que foi feito: 
+Mudamos os atributos de public para private e criamos funções públicas get...() e set...() para ler e alterar cada atributo.  
+Por que fizemos assim: Se os atributos fossem públicos, qualquer parte do código poderia alterá-los sem controle. Com private, 
+fechamos o acesso externo direto e canalizamos as operações por métodos que servem de intermediários. 
+O return no getter é indispensável para devolver o dado a quem o chamou.  
