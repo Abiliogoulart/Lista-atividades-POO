@@ -1,0 +1,48 @@
+DIAGRAMA:
++---------------------------------------+
+|                 Livro                 |
++---------------------------------------+
+| - titulo: string                      |
+| - autor: string                       |
++---------------------------------------+
+| + __construct($titulo, $autor = "")   |
+| + exibir(): void                      |
++---------------------------------------+
+
+CÓDIGO: 
+PARTE 01:
+<?php
+class Livro {
+    private $titulo;
+    private $autor;
+
+    // $titulo é obrigatório; $autor é opcional (padrão "Desconhecido")
+    public function __construct($titulo, $autor = "Desconhecido") {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+    }
+
+    public function exibir() {
+        echo "Livro: " . $this->titulo . " | Autor: " . $this->autor . "<br>";
+    }
+}
+?>
+
+PARTE 02:
+<?php
+require_once 'Livro.php';
+
+// Objeto 1: passando apenas o obrigatório
+$livro1 = new Livro("Poemas Antigos");
+
+// Objeto 2: passando os dois parâmetros
+$livro2 = new Livro("Grande Sertão: Veredas", "Guimarães Rosa");
+
+$livro1->exibir();
+$livro2->exibir();
+?>
+
+Explicação Passo a Passo, o que foi feito: 
+Adicionamos um valor padrão ao segundo parâmetro do construtor: $autor = "Desconhecido".  
+Por que fizemos assim: Como o PHP não permite sobrecarga de métodos (ou seja, não permite declarar dois __construct 
+diferentes na mesma classe), definir um valor padrão (= "") é a técnica oficial recomendada para criar parâmetros opcionais.  
