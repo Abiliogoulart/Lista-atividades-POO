@@ -1,0 +1,64 @@
+DIAGRAMA:
++-------------------------------+
+|             Livro             |
++-------------------------------+
+| - titulo: string              |
+| - autor: string               |
++-------------------------------+
+| + __construct($titulo)        |
+| + getTitulo(): string         |
+| + getAutor(): string          |
+| + setAutor($autor): void      |
+| + exibir(): void              |
++-------------------------------+
+
+CÓDIGO: 
+PARTE 01:
+<?php
+class Livro {
+    private $titulo;
+    private $autor;
+
+    // Construtor recebendo o título obrigatoriamente
+    public function __construct($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    public function getTitulo() {
+        return $this->titulo;
+    }
+
+    public function getAutor() {
+        return $this->autor;
+    }
+
+    public function setAutor($autor) {
+        $this->autor = $autor;
+    }
+
+    public function exibir() {
+        echo "Livro: " . $this->titulo . " - Autor: " . $this->autor . "<br>";
+    }
+}
+?>
+
+PARTE 02:
+<?php
+require_once 'Livro.php';
+
+// O título agora é passado diretamente na criação (new)
+$livro1 = new Livro("O Senhor dos Anéis");
+$livro1->setAutor("J.R.R. Tolkien");
+
+$livro2 = new Livro("Ensaio Sobre a Cegueira");
+$livro2->setAutor("José Saramago");
+
+$livro1->exibir();
+$livro2->exibir();
+?>
+
+Explicação Passo a Passo, o que foi feito: 
+Implementamos o método mágico __construct($titulo) na classe Livro e removemos a necessidade de um setTitulo(). Na criação 
+do objeto, passamos o título entre os parênteses do new Livro(...).  
+Por que fizemos assim: O construtor é executado automaticamente no instante em que o objeto "nasce". Ele garante que o 
+objeto já comece sua existência com os dados vitais preenchidos, impedindo a existência de livros sem título.  
