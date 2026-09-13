@@ -1,3 +1,5 @@
+DIAGRAMA:
+
 +-----------------------+
 |         Livro         |
 +-----------------------+
@@ -6,3 +8,32 @@
 +-----------------------+
 | + exibir(): void      |
 +-----------------------+
+
+CÓDIGO:
+
+<?php
+class Livro {
+    public $titulo;
+    public $autor;
+
+    public function exibir() {
+        echo "Livro: " . $this->titulo . " - Autor: " . $this->autor . "<br>";
+    }
+}
+
+// Criando um objeto a partir da classe
+$livro1 = new Livro();
+
+// Preenchendo os atributos
+$livro1->titulo = "Dom Casmurro";
+$livro1->autor = "Machado de Assis";
+
+// Chamando o método para exibir os dados
+$livro1->exibir();
+
+Explicação Passo a Passo:
+O que foi feito: Criamos a classe Livro com dois atributos públicos ($titulo e $autor) e 
+a função exibir(). Instanciamos um objeto $livro1 com new Livro(), atribuímos valores com a seta -> e chamamos $livro1->exibir().  
+Por que fizemos assim: Como visto na aula introdutória, uma classe funciona como uma "planta" ou "molde". 
+Declarar os atributos como public é a forma mais simples de começar a atribuir valores diretamente de fora da classe antes de vermos encapsulamento. 
+A palavra $this dentro do método serve para apontar para o próprio objeto que está chamando a função no momento.  
