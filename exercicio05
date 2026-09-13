@@ -1,0 +1,36 @@
+CODIGO:
+
+PARTE 01:
+<?php
+class Livro {
+    public $titulo;
+    public $autor;
+
+    public function definirDados($titulo, $autor) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+    }
+
+    public function exibir() {
+        echo "Livro: " . $this->titulo . " - Autor: " . $this->autor . "<br>";
+    }
+}
+?>
+-------------------------------------------------------------------------------------
+PARTE 02:
+<?php
+// Incluindo a classe de forma segura com require_once
+require_once 'Livro.php';
+
+$livro = new Livro();
+$livro->definirDados("A Revolução dos Bichos", "George Orwell");
+$livro->exibir();
+?>
+--------------------------------------------------------------------------------------
+
+Explicação Passo a Passo, o que foi feito: 
+Separamos o código em dois arquivos: Parte 01 (contém apenas a classe) e parte 02
+(executa a aplicação chamando a classe com require_once 'Livro.php').  
+Por que fizemos assim: Em sistemas profissionais, deixar tudo em um único arquivo cria desorganização e dificulta a manutenção. 
+Usamos require_once porque, se o arquivo faltar, o PHP encerra a execução com erro fatal (evitando bugs), e o sufixo _once 
+garante que a classe nunca seja redeclarada sem querer.  
