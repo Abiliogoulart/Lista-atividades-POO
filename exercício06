@@ -1,0 +1,60 @@
+DIAGRAMA:
+
++-----------------------+          +-----------------------+
+|         Aluno         |          |         Turma         |
++-----------------------+          +-----------------------+
+| + nome: string        |          | + nomeCurso: string   |
+| + matricula: string   |          | + sala: string        |
++-----------------------+          +-----------------------+
+| + exibir(): void      |          | + exibir(): void      |
++-----------------------+          +-----------------------+
+
+CÓDIGO:
+
+PARTE 01:
+<?php
+class Aluno {
+    public $nome;
+    public $matricula;
+
+    public function exibir() {
+        echo "Aluno: " . $this->nome . " (Matrícula: " . $this->matricula . ")<br>";
+    }
+}
+?>
+
+PARTE 02:
+<?php
+class Turma {
+    public $nomeCurso;
+    public $sala;
+
+    public function exibir() {
+        echo "Turma de " . $this->nomeCurso . " no Laboratório/Sala: " . $this->sala . "<br>";
+    }
+}
+?>
+
+PARTE 03:
+<?php
+require_once 'Aluno.php';
+require_once 'Turma.php';
+
+// Criando e exibindo uma Turma
+$turma = new Turma();
+$turma->nomeCurso = "Programação Web III";
+$turma->sala = "Lab 02";
+$turma->exibir();
+
+echo "<hr>";
+
+// Criando e exibindo um Aluno
+$aluno = new Aluno();
+$aluno->nome = "Lucas Silva";
+$aluno->matricula = "2026101";
+$aluno->exibir();
+?>
+
+Explicação Passo a Passo, o que foi feito: 
+Criamos dois arquivos de modelo separados (Aluno.php e Turma.php) e incluímos ambos no index.php via require_once.  
+Por que fizemos assim: Cada arquivo cuida de sua própria responsabilidade. No index.php, juntamos as classes para compor a lógica do sistema.  
