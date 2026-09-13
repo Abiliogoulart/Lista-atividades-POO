@@ -39,7 +39,7 @@ $livro1->exibir();
 $livro2->exibir();
 ?>
 
-Explicação Passo a Passo:O que foi feito: 
+Explicação Passo a Passo, o que foi feito: 
 Criamos o método definirDados($titulo, $autor) que recebe os valores e usa $this->titulo = $titulo para guardar esses valores nas propriedades do objeto.
 Por que fizemos assim: Evita preencher atributo por atributo manualmente do lado de fora. O uso do $this->atributo é fundamental 
 para o PHP saber que a variável com $this-> pertence ao objeto, enquanto a variável sem $this-> é o parâmetro recebido na função.  
