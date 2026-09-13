@@ -37,7 +37,7 @@ $livro3->exibir();
  */
 ?>
 
-Explicação Passo a Passo:O que foi feito: 
+Explicação Passo a Passo, o que foi feito: 
 Criamos 3 variáveis diferentes ($livro1, $livro2 e $livro3), cada uma recebendo um new Livro() com dados próprios, e chamamos o método de cada uma.  
 Por que fizemos assim: A classe é única (o molde), mas cada objeto instanciado é uma cópia independente com seu próprio estado. 
 O $this dentro de exibir() sabe exatamente quem chamou o método em cada linha.  
