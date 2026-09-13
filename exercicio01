@@ -31,8 +31,8 @@ $livro1->autor = "Machado de Assis";
 // Chamando o método para exibir os dados
 $livro1->exibir();
 
-Explicação Passo a Passo:
-O que foi feito: Criamos a classe Livro com dois atributos públicos ($titulo e $autor) e 
+Explicação Passo a Passo, o que foi feito: 
+Criamos a classe Livro com dois atributos públicos ($titulo e $autor) e 
 a função exibir(). Instanciamos um objeto $livro1 com new Livro(), atribuímos valores com a seta -> e chamamos $livro1->exibir().  
 Por que fizemos assim: Como visto na aula introdutória, uma classe funciona como uma "planta" ou "molde". 
 Declarar os atributos como public é a forma mais simples de começar a atribuir valores diretamente de fora da classe antes de vermos encapsulamento. 
