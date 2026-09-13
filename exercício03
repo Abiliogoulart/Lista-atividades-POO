@@ -1,0 +1,45 @@
+DIAGRAMA:
+
++------------------------------------------+
+|                  Livro                   |
++------------------------------------------+
+| + titulo: string                         |
+| + autor: string                          |
++------------------------------------------+
+| + definirDados($titulo, $autor): void    |
+| + exibir(): void                         |
++------------------------------------------+
+
+CÓDIGO: 
+
+<?php
+class Livro {
+    public $titulo;
+    public $autor;
+
+    // Método que recebe os dados por parâmetro
+    public function definirDados($titulo, $autor) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+    }
+
+    public function exibir() {
+        echo "Livro: " . $this->titulo . " - Autor: " . $this->autor . "<br>";
+    }
+}
+
+// Criando o objeto e preenchendo via método
+$livro1 = new Livro();
+$livro1->definirDados("Capitães da Areia", "Jorge Amado");
+
+$livro2 = new Livro();
+$livro2->definirDados("Vidas Secas", "Graciliano Ramos");
+
+$livro1->exibir();
+$livro2->exibir();
+?>
+
+Explicação Passo a Passo:O que foi feito: 
+Criamos o método definirDados($titulo, $autor) que recebe os valores e usa $this->titulo = $titulo para guardar esses valores nas propriedades do objeto.
+Por que fizemos assim: Evita preencher atributo por atributo manualmente do lado de fora. O uso do $this->atributo é fundamental 
+para o PHP saber que a variável com $this-> pertence ao objeto, enquanto a variável sem $this-> é o parâmetro recebido na função.  
